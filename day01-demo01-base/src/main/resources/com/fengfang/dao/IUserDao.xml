@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fengfang.dao.IUserDao">
+    <select id="findAll" resultType="com.fengfang.domain.User">
+    select * from user
+  </select>
+    <select id="findById" resultType="com.fengfang.domain.User">
+        select * from user where id =#{id}
+    </select>
+<!--    模糊查询方法-->
+    <select id="findByIdMap" resultType="com.fengfang.domain.User" >
+        select * from user where  name like #{name}
+    </select>
+<!--    对于通配符，需在SQL文件中写在里面不建议当参数传入进来-->
+    <select id="getUserLike" resultType="com.fengfang.domain.User" >
+        select * from user where  name like "%"#{value}"%"
+    </select>
+
+    <!--插入用户-->
+    <insert id="addUser" parameterType="com.fengfang.domain.User">
+        insert into user(name,pwd)values(#{name},#{pwd})
+    </insert>
+<!--对象中的属性，可以直接取出来
+    传递Map的key
+    假设实体类
+-->
+    <insert id="addUserMap" parameterType="map">
+        insert into user(name,pwd)values(#{userName},#{userPwd})
+    </insert>
+
+    <update id="updateUser" parameterType="com.fengfang.domain.User">
+        update user set name =#{name} ,pwd=#{pwd} where id=#{id}
+    </update>
+    <delete id="deleteUser" parameterType="java.lang.Integer">
+        delete from user where id=#{id}
+    </delete>
+</mapper>

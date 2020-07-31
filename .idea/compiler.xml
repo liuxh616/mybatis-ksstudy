@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="day02-demo03-logs" />
+        <module name="day01-demo01-base" />
+        <module name="day02-demo01-config" />
+        <module name="day02-demo02-columnname" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>
