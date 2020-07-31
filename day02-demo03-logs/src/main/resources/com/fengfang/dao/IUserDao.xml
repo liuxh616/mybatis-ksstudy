@@ -18,4 +18,12 @@
     <select id="findAll" resultMap="com.fengfang.domain.User">
         select id,name as userName,pwd as userPassword from user
     </select>-->
+
+    <select id="findAllPages" parameterType="map" resultMap="userMap">
+        select * from user limit #{startIndex},#{pageSize}
+    </select>
+
+    <select id="findAllBowBounds" resultMap="userMap">
+        select * from user
+    </select>
 </mapper>

@@ -3,6 +3,7 @@ package com.fengfang.dao;
 import com.fengfang.domain.User;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * TODO
@@ -16,4 +17,17 @@ public interface IUserDao {
      * @return
      */
     List<User> findAll();
+
+    /**
+     * 使用Limit分页查询
+     * @param map
+     * @return
+     */
+    List<User> findAllPages(Map<String,Integer> map);
+
+    /**
+     *
+     * @return
+     */
+    List<User> findAllBowBounds();
 }
