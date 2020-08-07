@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fengfang.dao.IBlogDao">
+    <insert id="addBlog" parameterType="blog">
+        insert into blog(id,title,author,create_time,views)
+        values(#{id},#{title},#{author},#{createTime},#{views})
+    </insert>
+    <select id="findAll" resultType="blog">
+        select * from blog
+    </select>
+
+    <select id="findAllIf" resultType="blog" parameterType="map" >
+        select * from blog
+        <where>
+            <if test="title != null">
+                title =#{title}
+            </if>
+            <if test="author != null">
+                and author =#{author}
+            </if>
+            <if test="views != null">
+                and views >=#{views}
+            </if>
+        </where>
+    </select>
+</mapper>

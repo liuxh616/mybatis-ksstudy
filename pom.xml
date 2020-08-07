@@ -12,6 +12,10 @@
         <module>day02-demo01-config</module>
         <module>day02-demo02-columnname</module>
         <module>day02-demo03-logs</module>
+        <module>day03-demo01-anno</module>
+        <module>day03-demo02-resultMap</module>
+        <module>day03-demo03-collection</module>
+        <module>day04-demo01-dynSQL</module>
     </modules>
     <dependencies>
 <!--        导入jdbc-->

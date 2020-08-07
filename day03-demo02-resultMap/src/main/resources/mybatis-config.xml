@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="db.properties">
+        <property name="username" value="root"/>
+        <property name="password" value="123456"/>
+    </properties>
+
+    <settings>
+        <setting name="logImpl" value="Log4j"/>
+    </settings>
+<!--    定义别名-->
+    <typeAliases>
+        <!--<package name="com.fengfang.controller"/>-->
+        <typeAlias type="com.fengfang.domain.Teacher" alias="teacher" />
+        <typeAlias type="com.fengfang.domain.Student" alias="student" />
+    </typeAliases>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+
+    </environments>
+    <mappers>
+<!--        使用资源文件路径-->
+       <!-- <mapper resource="com/fengfang/dao/IUserDao.xml"></mapper>-->
+<!--        使用包名注册 -->
+        <!--<package name="com.fengfang.dao" />-->
+<!--        使用类路径注册-->
+       <!-- <mapper resource="com/fengfang/dao/*Dao.xml"/>-->
+        <mapper class="com.fengfang.dao.ITeacherDao"/>
+        <mapper resource="com/fengfang/dao/IStudentDao.xml" />
+    </mappers>
+</configuration>

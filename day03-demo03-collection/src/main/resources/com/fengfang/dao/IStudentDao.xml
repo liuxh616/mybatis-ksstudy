@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fengfang.dao.IStudentDao">
+<!--按照查询方法处理-->
+    <resultMap id="studentTeacher" type="student">
+        <id column="id" property="id"></id>
+        <result column="name" property="name"></result>
+<!--复杂的属性，我们要单独处理
+        association 使用对象
+        collection  集合
+-->
+        <collection property="teacher" column="tid" javaType="Teacher" select="getTeacher">
+            <id column="id" property="id" />
+            <collection property="name" column="name"/>
+        </collection>
+    </resultMap>
+    <select id="findAll" resultMap="studentTeacher">
+        select * from student
+    </select>
+    <select id="getTeacher" resultType="Teacher">
+        select * from teacher where id=#{id}
+    </select>
+<!--按照结果嵌套处理-->
+    <resultMap id="studentTeacher2" type="Student">
+        <id column="sid" property="id"/>
+        <result column="sname" property="name"/>
+        <association property="teacher" javaType="Teacher">
+            <id column="tid" property="id"/>
+            <result column="tname" property="name"/>
+        </association>
+    </resultMap>
+    <select id="findAll2" resultMap="studentTeacher2">
+        select s.id as sid,s.name as sname,t.name tname,t.id as tid
+        from student s ,teacher t where s.tid=t.id
+    </select>
+</mapper>
