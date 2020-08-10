@@ -10,7 +10,17 @@
     <select id="findAll" resultType="blog">
         select * from blog
     </select>
-
+    <sql id="if-title-author">
+        <if test="title != null">
+            title =#{title}
+        </if>
+        <if test="author != null">
+            and author =#{author}
+        </if>
+        <if test="views != null">
+            and views >=#{views}
+        </if>
+    </sql>
     <select id="findAllIf" resultType="blog" parameterType="map" >
         select * from blog
         <where>
@@ -25,4 +35,43 @@
             </if>
         </where>
     </select>
+    <select id="findAllRefId" resultType="Blog" parameterType="map">
+        select * from blog
+        <where>
+            <include refid="if-title-author"></include>
+        </where>
+    </select>
+
+    <select id="findAllForeach" parameterType="map" resultType="blog">
+        select * from blog
+        <where>
+            <foreach collection="ids" open="and (" close=")" separator="or" item="id">
+                id = #{id}
+            </foreach>
+        </where>
+    </select>
+    <select id="findAllLike" resultType="blog">
+        select * from blog
+        <where>
+            <choose>
+                <when test="title !=null ">
+                    and title like "%"#{title}"%"
+                </when>
+                <when test="author !=null">
+                    and author =#{author}
+                </when>
+                <otherwise>
+                    and views =#{views}
+                </otherwise>
+            </choose>
+        </where>
+    </select>
+    <update id="updateBlog" parameterType="map">
+        update blog
+        <set>
+            <if test="title !=null">title=#{title},</if>
+            <if test="author !=null">author=#{author}</if>
+        </set>
+        where id=#{id}
+    </update>
 </mapper>

@@ -25,9 +25,36 @@ public interface IBlogDao {
     public List<Blog> findAllIf(Map<String,Object> map);
 
     /**
+     * 根据代码片断来查询
+     * @param map
+     * @return
+     */
+    public List<Blog> findAllRefId(Map map);
+    /**
+     *
+     * @param map
+     * @return
+     */
+    public List<Blog> findAllLike(Map<String,Object> map);
+
+    /**
+     *
+     * @param map
+     * @return
+     */
+    public List<Blog> findAllForeach(Map map);
+    /**
      * 写入数据
      * @param blog
      * @return
      */
     public int addBlog(Blog blog);
+
+    /**
+     * 更新博客
+     * @param map
+     * @return
+     */
+    public int updateBlog(Map map);
+
 }
