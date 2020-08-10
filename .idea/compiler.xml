@@ -9,6 +9,7 @@
         <module name="day03-demo01-anno" />
         <module name="day02-demo02-columnname" />
         <module name="day01-demo01-base" />
+        <module name="day04-demo02-cache" />
         <module name="day03-demo02-resultMap" />
         <module name="day02-demo03-logs" />
         <module name="day04-demo01-dynSQL" />
