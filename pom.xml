@@ -17,6 +17,7 @@
         <module>day03-demo03-collection</module>
         <module>day04-demo01-dynSQL</module>
         <module>day04-demo02-cache</module>
+        <module>day04-demo03-exam</module>
     </modules>
     <dependencies>
 <!--        导入jdbc-->
